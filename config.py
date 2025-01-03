@@ -30,6 +30,66 @@ LOGGING = {
     },
     'handlers': {
         # Access log for werkzeug
-        'access_log_handler'
+        'access_log_handler' :{
+            'level' : 'INFO',
+            'class' : 'logging.handlers.TimeRotatingFileHandler',
+            'filename': ACCES_LOG,
+            'when' : 'midnight',
+            'interval' : 1,
+            'buckupCount' : 7,
+            'formatter': 'default',
+        },
+        # Error log
+        'error_log_handler' :{
+            'level' : 'ERROR',
+            'class' : 'logging.handlers.TimeRotatingFileHandler',
+            'filename': ERROR_LOG,
+            'when' : 'midnight',
+            'interval' : 1,
+            'buckupCount' : 7,
+            'formatter': 'default',
+        },
+        # App log
+        'app_log_handler' :{
+            'level' : 'DEBUG',
+            'class' : 'logging.handlers.TimeRotatingFileHandler',
+            'filename': APP_LOG,
+            'when' : 'midnight',
+            'interval' : 1,
+            'buckupCount' : 7,
+            'formatter': 'app',
+        },
+        # Console log for debugging
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'default',
+        },
+    },
+    'loggers' : {
+        # access log
+        'access' : {
+            'handlers': ['access_log_handler'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        # error log
+        'error' : {
+            'handlers': ['error_log_handler'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+        # app log
+        'app' : {
+            'handlers': ['app_log_handler'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        # console log
+        '': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
     }
 }
