@@ -1,19 +1,20 @@
 import os
-from datetime import datetime, timedelta, timezone
+from datetime import datetime
 
 # Settings to prepare the log files per month
-
-UTC_1 = timezone(timedelta(hours=1))
-current_time_eu = datetime.now(UTC_1)
-year_month = current_time_eu.strftime("%Y-%m")
+current_time = datetime.now()
+year_month = current_time.strftime("%Y/%m")
 
 LOG_FOLDER = os.path.join(os.path.dirname(__file__), "logs", year_month)
-if not os.path.exists(LOG_FOLDER):
-    os.makedirs(LOG_FOLDER)
+os.makedirs(LOG_FOLDER, exist_ok=True)
 
-ACCES_LOG = os.path.join(LOG_FOLDER, f'access_{current_time_eu.strftime("%Y-%m-%d")}.log')
-ERROR_LOG = os.path.join(LOG_FOLDER, f'error_{current_time_eu.strftime("%Y-%m-%d")}.log')
-APP_LOG = os.path.join(LOG_FOLDER, f'app_{current_time_eu.strftime("%Y-%m-%d")}.log')
+def get_log_file_path(log_type: str) -> str:
+    """Generate log file path based on log type and current date."""
+    return os.path.join(LOG_FOLDER, f'{log_type}_{current_time.strftime("%Y-%m-%d")}.log')
+
+ACCES_LOG = get_log_file_path('access')
+ERROR_LOG = get_log_file_path('error')
+APP_LOG = get_log_file_path('app')
 
 # Settings for the loggings
 
