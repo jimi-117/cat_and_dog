@@ -54,6 +54,9 @@ model = load_model(MODEL_PATH)
 model.make_predict_function()
 
 def model_predict(img, model):
+    # convert to RGB, resize and preprocess image
+    img = img.convert('RGB')
+    img = img.resize((224, 224))
     x = keras.utils.img_to_array(img)
     x = np.expand_dims(x, axis=0)
     x = x / 255.0
