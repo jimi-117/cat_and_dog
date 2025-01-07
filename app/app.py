@@ -23,8 +23,8 @@ def headers_to_string(headers):
 def log_request_info():
     request_info = (
         f"Request: method={request.method}, url={request.url}, "
-        f"headers=[{headers_to_string(request.headers)}], "
-        f"body={request.get_data(as_text=True)}"
+        # f"headers=[{headers_to_string(request.headers)}], "
+        # f"body={request.get_data(as_text=True)}"
     )
     access_logger.info(request_info)
     
@@ -54,9 +54,6 @@ model = load_model(MODEL_PATH)
 model.make_predict_function()
 
 def model_predict(img, model):
-    # convert to RGB, resize and preprocess image
-    img = img.convert('RGB')
-    img = img.resize((224, 224))
     x = keras.utils.img_to_array(img)
     x = np.expand_dims(x, axis=0)
     x = x / 255.0
@@ -76,6 +73,13 @@ def upload():
         
         buffered_img = BytesIO(f.read())
         img = Image.open(buffered_img)
+        
+        # Resize the image to 128x128
+        img = img.resize((128, 128))
+        # reset buffer and save image to buffer
+        buffered_img.seek(0)
+        buffered_img.truncate(0)
+        img.save(buffered_img, format="JPEG")
 
         base64_img = base64.b64encode(buffered_img.getvalue()).decode("utf-8")
 
