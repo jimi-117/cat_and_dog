@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for, send_from_directory
 import numpy as np
 from keras.models import load_model
 import os
@@ -61,6 +61,9 @@ def model_predict(img, model):
     preds = model.predict(x)
     return preds
 
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico')
 
 @app.route('/', methods=['GET'])
 def home():
