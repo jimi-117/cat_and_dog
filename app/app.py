@@ -85,7 +85,7 @@ def upload():
 
         preds = model_predict(img, model)
         result = "Chien" if preds[0][0] < 0.5 else "Chat"
-        
+        print(result)
         return render_template('result.html', result=result, image_base64_front=base64_img)
     
     return redirect('/')
