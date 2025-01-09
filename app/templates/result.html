@@ -23,7 +23,7 @@
                     <input type="hidden" name="image" value="{{ image_base64_front }}">
                     <button type="submit" name="feedback" value="reject" class="btn btn-danger">Rejecter la prédiction</button>
                     <button type="submit" name="feedback" value="accept" class="btn btn-success">Accepter la prédiction</button>
-                    <a href = "{{ url_for('index') }}" class="btn btn-primary">Revenir à la page d'acceuil</a>
+                    <a href = "{{ url_for('home') }}" class="btn btn-primary">Revenir à la page d'acceuil</a>
                 </form>
             {% else %}
             {% endif %}

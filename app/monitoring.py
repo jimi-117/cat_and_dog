@@ -12,8 +12,8 @@ prediction_errors = Counter(
     'Total number of prediction errors',
 )
 
-# Histogram to measure the duration of a prediction request
-prediction_duration = Histogram(
+# Histogram to measure the latency of a prediction request
+prediction_latency = Histogram(
     'prediction_latencyd_seconds', 
     'Time spent for prediction',
 )

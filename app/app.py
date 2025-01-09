@@ -21,6 +21,14 @@ import mlflow.keras
 
 mlflow.set_tracking_uri("file:.mlruns")
 
+# monotoring
+from .monitoring import prediction_requests, prediction_errors, prediction_latency
+
+
+#--------------------------------------------------------------------------------#
+# app settings
+#--------------------------------------------------------------------------------#
+
 app = create_app()
 
 def headers_to_string(headers):
@@ -55,18 +63,33 @@ def index():
     return render_template("index.html", page_title="TOP")
 
 
-MODEL_PATH = os.path.join("models", "model.keras")
+#--------------------------------------------------------------------------------#
 
-model = load_model(MODEL_PATH)
-model.make_predict_function()
+# loading model
+MODEL_PATH = os.path.join("models", "model.keras")
+model = None
+
+try:
+    model = load_model(MODEL_PATH)
+    model.make_predict_function()
+    logger.info("Model loaded successfully")
+except Exception as e:
+    logger.error(f"Error loading model: {e}")
+    
 
 def model_predict(img, model):
+    if model is None:
+        raise FileNotFoundError("Model not loaded")
     x = keras.utils.img_to_array(img)
     x = np.expand_dims(x, axis=0)
     x = x / 255.0
-
-    preds = model.predict(x)
+    
+    # measure latency
+    with prediction_latency.time():
+        preds = model.predict(x)
+    
     return preds
+
 
 @app.route('/favicon.ico')
 def favicon():
@@ -76,11 +99,14 @@ def favicon():
 def home():
     return render_template('index.html')
 
+
 @app.route('/result', methods=['GET', 'POST'])
 def upload():
     if request.method == 'POST':
-        f = request.files['file']
+        # increasing req count
+        prediction_requests.inc()
         
+        f = request.files['file']
         buffered_img = BytesIO(f.read())
         img = Image.open(buffered_img)
         
@@ -92,9 +118,14 @@ def upload():
         img.save(buffered_img, format="JPEG")
 
         base64_img = base64.b64encode(buffered_img.getvalue()).decode("utf-8")
-
-        preds = model_predict(img, model)
-        result = "Chien" if preds[0][0] < 0.5 else "Chat"
+        
+        try:
+            preds = model_predict(img, model)
+            result = "Chien" if preds[0][0] < 0.5 else "Chat"
+        except Exception as e:
+            prediction_errors.inc()
+            logger.error(f"Prediction error: {e}")
+            result = "Error"
         print(result)
         return render_template('result.html', result=result, image_base64_front=base64_img)
     
@@ -119,12 +150,19 @@ def feedback():
     with mlflow.start_run(run_name="feedback"):
         mlflow.log_param("prediction", prediction)
         mlflow.log_param("feedback", feedback_value)
-        
+        mlflow.log_artifact(tmp_filename)
+          
     # remove tmp file
-    os.remove(tmp_filename)
+    if os.path.exists(tmp_filename):
+        os.remove(tmp_filename)
     
     # returning on top when recive the feedback
     return redirect(url_for("home"))
 
+@app.route('/metrics')
+def metrics():
+    from prometheus_client import generate_latest, CONTENT_TYPE_LATEST
+    return generate_latest(), 200 , {'content-type': CONTENT_TYPE_LATEST}
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()

@@ -1,0 +1,15 @@
+artifact_uri: file:///home/sho/workspace/cat_and_dog/app/.mlruns/0/cb6046d21f814b73b1e8bccf5736d696/artifacts
+end_time: 1736439147983
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: cb6046d21f814b73b1e8bccf5736d696
+run_name: feedback
+run_uuid: cb6046d21f814b73b1e8bccf5736d696
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1736439147975
+status: 3
+tags: []
+user_id: sho
