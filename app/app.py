@@ -9,10 +9,17 @@ import keras
 
 from app import create_app
 
+# logging
 from flask import Blueprint
 import logging
 access_logger = logging.getLogger('access')
 error_logger = logging.getLogger('error')
+
+# mlflow
+import mlflow
+import mlflow.keras
+
+mlflow.set_tracking_uri("file:.mlruns")
 
 app = create_app()
 
@@ -92,6 +99,32 @@ def upload():
         return render_template('result.html', result=result, image_base64_front=base64_img)
     
     return redirect('/')
+
+# endpoint for feedback loop
+@app.route('/feedback', methods=['POST'])
+def feedback():
+    feedback_value = request.form.get("feedback")
+    prediction = request.form.get("prediction")
+    image_base64 = request.form.get("image")
+    
+    # decode and save temporarily base64 image
+    import time
+    timestamp = str(time.time())
+    image_data = base64.b64decode(image_base64)
+    tmp_filename = f"feedback_image_{timestamp}.jpg"
+    with open(tmp_filename, "wb") as f:
+        f.write(image_data)
+
+    # logging mlflow
+    with mlflow.start_run(run_name="feedback"):
+        mlflow.log_param("prediction", prediction)
+        mlflow.log_param("feedback", feedback_value)
+        
+    # remove tmp file
+    os.remove(tmp_filename)
+    
+    # returning on top when recive the feedback
+    return redirect(url_for("home"))
 
 if __name__ == '__main__':
     app.run(debug=True)
