@@ -109,12 +109,17 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "flask" },
+    { name = "grafana-api" },
     { name = "gunicorn" },
     { name = "icrawler" },
     { name = "ipykernel" },
     { name = "keras" },
+    { name = "mlflow" },
     { name = "numpy" },
     { name = "pillow" },
+    { name = "prometheus-client" },
+    { name = "prometheus-flask-exporter" },
+    { name = "python-dotenv" },
     { name = "pyyaml" },
     { name = "scikit-learn" },
     { name = "tensorflow" },
@@ -122,11 +127,7 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
-    { name = "grafana-api" },
-    { name = "mlflow" },
     { name = "mypy" },
-    { name = "prometheus-client" },
-    { name = "prometheus-flask-exporter" },
     { name = "pytest" },
     { name = "python-dotenv" },
     { name = "ruff" },
@@ -135,12 +136,17 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "flask", specifier = ">=3.0.3" },
+    { name = "grafana-api", specifier = ">=1.0.3" },
     { name = "gunicorn", specifier = ">=23.0.0" },
     { name = "icrawler", specifier = ">=0.6.9" },
     { name = "ipykernel", specifier = ">=6.29.5" },
     { name = "keras", specifier = ">=3.6.0" },
+    { name = "mlflow", specifier = ">=2.19.0" },
     { name = "numpy", specifier = ">=2.0.2" },
     { name = "pillow", specifier = ">=11.0.0" },
+    { name = "prometheus-client", specifier = ">=0.21.1" },
+    { name = "prometheus-flask-exporter", specifier = ">=0.23.1" },
+    { name = "python-dotenv", specifier = ">=1.0.1" },
     { name = "pyyaml", specifier = ">=6.0.2" },
     { name = "scikit-learn", specifier = ">=1.6.0" },
     { name = "tensorflow", specifier = ">=2.18.0" },
@@ -148,11 +154,7 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "grafana-api", specifier = ">=1.0.3" },
-    { name = "mlflow", specifier = ">=2.19.0" },
     { name = "mypy", specifier = ">=1.13.0" },
-    { name = "prometheus-client", specifier = ">=0.21.1" },
-    { name = "prometheus-flask-exporter", specifier = ">=0.23.1" },
     { name = "pytest", specifier = ">=8.3.3" },
     { name = "python-dotenv", specifier = ">=1.0.1" },
     { name = "ruff", specifier = ">=0.7.1" },
