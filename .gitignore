@@ -165,5 +165,6 @@ cython_debug/
 lab.*
 logs/*
 
+etc/*
 pet_images/**
 animals/**
