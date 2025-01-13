@@ -15,6 +15,11 @@ dependencies = [
     "pyyaml>=6.0.2",
     "scikit-learn>=1.6.0",
     "tensorflow>=2.18.0",
+    "prometheus-client>=0.21.1",
+    "prometheus-flask-exporter>=0.23.1",
+    "flask-prometheus-metrics>=1.0.0",
+    "flask-monitoringdashboard>=3.3.2",
+    "mlflow>=2.19.0",
 ]
 
 [dependency-groups]
@@ -22,8 +27,6 @@ dev = [
     "grafana-api>=1.0.3",
     "mlflow>=2.19.0",
     "mypy>=1.13.0",
-    "prometheus-client>=0.21.1",
-    "prometheus-flask-exporter>=0.23.1",
     "pytest>=8.3.3",
     "python-dotenv>=1.0.1",
     "ruff>=0.7.1",

@@ -1,0 +1,19 @@
+services:
+  flask:
+    build:
+      context: ./app
+    ports:
+      - "5000:5000"
+
+  prometheus:
+    image: prom/prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yaml"
+    volumes:
+      - type: bind
+        source: ./prometheus-config/prometheus.yaml
+        target: /etc/prometheus/prometheus.yaml
+    ports:
+      - 80:9090
+    depends_on:
+      - "flask"
