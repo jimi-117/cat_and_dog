@@ -40,6 +40,20 @@ wheels = [
 ]
 
 [[package]]
+name = "apscheduler"
+version = "3.10.4"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pytz" },
+    { name = "six" },
+    { name = "tzlocal" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/5e/34/5dcb368cf89f93132d9a31bd3747962a9dc874480e54333b0c09fa7d56ac/APScheduler-3.10.4.tar.gz", hash = "sha256:e6df071b27d9be898e486bc7940a7be50b4af2e9da7c08f0744a96d4bd4cef4a", size = 100832 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/13/b5/7af0cb920a476dccd612fbc9a21a3745fb29b1fcd74636078db8f7ba294c/APScheduler-3.10.4-py3-none-any.whl", hash = "sha256:fb91e8a768632a4756a585f79ec834e0e27aad5860bac7eaa523d9ccefd87661", size = 59303 },
+]
+
+[[package]]
 name = "asttokens"
 version = "3.0.0"
 source = { registry = "https://pypi.org/simple" }
@@ -109,12 +123,17 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "flask" },
+    { name = "flask-monitoringdashboard" },
+    { name = "flask-prometheus-metrics" },
     { name = "gunicorn" },
     { name = "icrawler" },
     { name = "ipykernel" },
     { name = "keras" },
+    { name = "mlflow" },
     { name = "numpy" },
     { name = "pillow" },
+    { name = "prometheus-client" },
+    { name = "prometheus-flask-exporter" },
     { name = "pyyaml" },
     { name = "scikit-learn" },
     { name = "tensorflow" },
@@ -125,8 +144,6 @@ dev = [
     { name = "grafana-api" },
     { name = "mlflow" },
     { name = "mypy" },
-    { name = "prometheus-client" },
-    { name = "prometheus-flask-exporter" },
     { name = "pytest" },
     { name = "python-dotenv" },
     { name = "ruff" },
@@ -135,12 +152,17 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "flask", specifier = ">=3.0.3" },
+    { name = "flask-monitoringdashboard", specifier = ">=3.3.2" },
+    { name = "flask-prometheus-metrics", specifier = ">=1.0.0" },
     { name = "gunicorn", specifier = ">=23.0.0" },
     { name = "icrawler", specifier = ">=0.6.9" },
     { name = "ipykernel", specifier = ">=6.29.5" },
     { name = "keras", specifier = ">=3.6.0" },
+    { name = "mlflow", specifier = ">=2.19.0" },
     { name = "numpy", specifier = ">=2.0.2" },
     { name = "pillow", specifier = ">=11.0.0" },
+    { name = "prometheus-client", specifier = ">=0.21.1" },
+    { name = "prometheus-flask-exporter", specifier = ">=0.23.1" },
     { name = "pyyaml", specifier = ">=6.0.2" },
     { name = "scikit-learn", specifier = ">=1.6.0" },
     { name = "tensorflow", specifier = ">=2.18.0" },
@@ -151,8 +173,6 @@ dev = [
     { name = "grafana-api", specifier = ">=1.0.3" },
     { name = "mlflow", specifier = ">=2.19.0" },
     { name = "mypy", specifier = ">=1.13.0" },
-    { name = "prometheus-client", specifier = ">=0.21.1" },
-    { name = "prometheus-flask-exporter", specifier = ">=0.23.1" },
     { name = "pytest", specifier = ">=8.3.3" },
     { name = "python-dotenv", specifier = ">=1.0.1" },
     { name = "ruff", specifier = ">=0.7.1" },
@@ -297,6 +317,15 @@ wheels = [
 ]
 
 [[package]]
+name = "colorhash"
+version = "2.0.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/77/4b/514115dffc59a54eca31c748e473f6f780535e00db31e25cffc88abd2281/colorhash-2.0.0.tar.gz", hash = "sha256:f8171ea6bd3e1f3b9345bf837acc35576062c3b78e5048dc0e37651e09e4a118", size = 7789 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a1/58/f570e4e53ff5625415e22d8b51ee9019b1d364d111df4e24561f6ba21d01/colorhash-2.0.0-py3-none-any.whl", hash = "sha256:560fd010f545ae4d5323c3dd4f664cbc8c8d75555c5766c22b47be64acce722f", size = 6401 },
+]
+
+[[package]]
 name = "comm"
 version = "0.2.2"
 source = { registry = "https://pypi.org/simple" }
@@ -306,6 +335,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/e9/a8/fb783cb0abe2b5fded9f55e5703015cdf1c9c85b3669087c538dd15a6a86/comm-0.2.2.tar.gz", hash = "sha256:3fd7a84065306e07bea1773df6eb8282de51ba82f77c72f9c85716ab11fe980e", size = 6210 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/e6/75/49e5bfe642f71f272236b5b2d2691cf915a7283cc0ceda56357b61daa538/comm-0.2.2-py3-none-any.whl", hash = "sha256:e6fb86cb70ff661ee8c9c14e7d36d6de3b4066f1441be4063df9c5009f0a64d3", size = 7180 },
+]
+
+[[package]]
+name = "configparser"
+version = "7.1.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/a5/2e/a8d83652990ecb5df54680baa0c53d182051d9e164a25baa0582363841d1/configparser-7.1.0.tar.gz", hash = "sha256:eb82646c892dbdf773dae19c633044d163c3129971ae09b49410a303b8e0a5f7", size = 50122 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ee/df/1514580907b0bac0970415e5e24ef96a9c1fa71dcf2aa0139045b58fae9a/configparser-7.1.0-py3-none-any.whl", hash = "sha256:98e374573c4e10e92399651e3ba1c47a438526d633c44ee96143dec26dad4299", size = 17074 },
 ]
 
 [[package]]
@@ -460,6 +498,41 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/41/e1/d104c83026f8d35dfd2c261df7d64738341067526406b40190bc063e829a/flask-3.0.3.tar.gz", hash = "sha256:ceb27b0af3823ea2737928a4d99d125a06175b8512c445cbd9a9ce200ef76842", size = 676315 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/61/80/ffe1da13ad9300f87c93af113edd0638c75138c42a0994becfacac078c06/flask-3.0.3-py3-none-any.whl", hash = "sha256:34e815dfaa43340d1d15a5c3a02b8476004037eb4840b34910c6e21679d288f3", size = 101735 },
+]
+
+[[package]]
+name = "flask-monitoringdashboard"
+version = "3.3.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "apscheduler" },
+    { name = "click" },
+    { name = "colorhash" },
+    { name = "configparser" },
+    { name = "flask" },
+    { name = "numpy" },
+    { name = "psutil" },
+    { name = "pytz" },
+    { name = "requests" },
+    { name = "scipy" },
+    { name = "sqlalchemy" },
+    { name = "tzlocal" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/a7/33/69361799f6659f7c60d4957ea336ba2c39ecb7bcc5294515331d007046c6/flask_monitoringdashboard-3.3.2.tar.gz", hash = "sha256:95c4a7e1ed633d4b032ff453c1d62c10953f0671907cea93a5618b670019bae2", size = 6793954 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/02/70/6903b689dc531db4ca40ddbb9fe684b43ca163a8ccd451178f70ccbb683a/Flask_MonitoringDashboard-3.3.2-py3-none-any.whl", hash = "sha256:c9a7ef3ccb157312c025b46db8e7c92ff01c875c83f3a290c8c494650cec255a", size = 1570853 },
+]
+
+[[package]]
+name = "flask-prometheus-metrics"
+version = "1.0.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "prometheus-client" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/74/a2/83a59fb33c2024dff49d6a493cced94c34d57fbfe6ee1fa5e90faf86df90/flask_prometheus_metrics-1.0.0.tar.gz", hash = "sha256:a2f79c40b53a04e861c4192514c043ff7d807e2fb0131b3eee29a6984206b22e", size = 5815 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e6/64/09958116bdc267a1ee8f442e135166990d54403c8fdd4e8b3d275d7f7433/flask_prometheus_metrics-1.0.0-py3-none-any.whl", hash = "sha256:f28e8d3a9d0b7ee4761f1490c9653a95d83e11136ba6ecd010697aa9b3b83724", size = 6219 },
 ]
 
 [[package]]
@@ -1896,7 +1969,7 @@ wheels = [
 
 [[package]]
 name = "requests"
-version = "2.32.3"
+version = "2.31.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "certifi" },
@@ -1904,9 +1977,9 @@ dependencies = [
     { name = "idna" },
     { name = "urllib3" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/63/70/2bf7780ad2d390a8d301ad0b550f1581eadbd9a20f896afe06353c2a2913/requests-2.32.3.tar.gz", hash = "sha256:55365417734eb18255590a9ff9eb97e9e1da868d4ccd6402399eaf68af20a760", size = 131218 }
+sdist = { url = "https://files.pythonhosted.org/packages/9d/be/10918a2eac4ae9f02f6cfe6414b7a155ccd8f7f9d4380d62fd5b955065c3/requests-2.31.0.tar.gz", hash = "sha256:942c5a758f98d790eaed1a29cb6eefc7ffb0d1cf7af05c3d2791656dbd6ad1e1", size = 110794 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/f9/9b/335f9764261e915ed497fcdeb11df5dfd6f7bf257d4a6a2a686d80da4d54/requests-2.32.3-py3-none-any.whl", hash = "sha256:70761cfe03c773ceb22aa2f671b4757976145175cdfca038c02654d061d6dcc6", size = 64928 },
+    { url = "https://files.pythonhosted.org/packages/70/8e/0e2d847013cb52cd35b38c009bb167a1a26b2ce6cd6965bf26b47bc0bf44/requests-2.31.0-py3-none-any.whl", hash = "sha256:58cd2187c01e70e6e26505bca751777aa9f2ee0b7f4300988b709f44e013003f", size = 62574 },
 ]
 
 [[package]]
@@ -2268,6 +2341,18 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/e1/34/943888654477a574a86a98e9896bae89c7aa15078ec29f490fef2f1e5384/tzdata-2024.2.tar.gz", hash = "sha256:7d85cc416e9382e69095b7bdf4afd9e3880418a2413feec7069d533d6b4e31cc", size = 193282 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/a6/ab/7e5f53c3b9d14972843a647d8d7a853969a58aecc7559cb3267302c94774/tzdata-2024.2-py2.py3-none-any.whl", hash = "sha256:a48093786cdcde33cad18c2555e8532f34422074448fbc874186f0abd79565cd", size = 346586 },
+]
+
+[[package]]
+name = "tzlocal"
+version = "2.0.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pytz" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/c6/52/5ec375d4efcbe4e31805f3c4b301bdfcff9dcbdb3605d4b79e117a16b38d/tzlocal-2.0.0.tar.gz", hash = "sha256:949b9dd5ba4be17190a80c0268167d7e6c92c62b30026cf9764caf3e308e5590", size = 22040 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ef/99/53bd1ac9349262f59c1c421d8fcc2559ae8a5eeffed9202684756b648d33/tzlocal-2.0.0-py2.py3-none-any.whl", hash = "sha256:11c9f16e0a633b4b60e1eede97d8a46340d042e67b670b290ca526576e039048", size = 15963 },
 ]
 
 [[package]]
