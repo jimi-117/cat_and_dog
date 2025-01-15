@@ -1,0 +1,15 @@
+artifact_uri: file:///home/sho/workspace/cat_and_dog/src/mlruns/383944098669244396/37c6be6f94b94852b9e972da981c3f41/artifacts
+end_time: 1736851960337
+entry_point_name: ''
+experiment_id: '383944098669244396'
+lifecycle_stage: active
+run_id: 37c6be6f94b94852b9e972da981c3f41
+run_name: funny-foal-375
+run_uuid: 37c6be6f94b94852b9e972da981c3f41
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1736851960331
+status: 3
+tags: []
+user_id: sho

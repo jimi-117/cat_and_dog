@@ -1,0 +1,15 @@
+artifact_uri: file:///home/sho/workspace/cat_and_dog/src/mlruns/383944098669244396/3468cd34401a465db5c214fd324f8971/artifacts
+end_time: 1736916649624
+entry_point_name: ''
+experiment_id: '383944098669244396'
+lifecycle_stage: active
+run_id: 3468cd34401a465db5c214fd324f8971
+run_name: masked-mouse-929
+run_uuid: 3468cd34401a465db5c214fd324f8971
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1736916649449
+status: 3
+tags: []
+user_id: sho
