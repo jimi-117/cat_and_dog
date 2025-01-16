@@ -7,14 +7,16 @@ requires-python = ">=3.11.10"
 dependencies = [
     "flask>=3.0.3",
     "keras>=3.6.0",
+    "mlflow>=2.19.0",
     "numpy>=2.0.2",
     "pillow>=11.0.0",
+    "prometheus-client>=0.21.1",
+    "prometheus-flask-exporter>=0.23.1",
+    "scikit-learn>=1.6.1",
     "tensorflow>=2.18.0",
 ]
 
 [dependency-groups]
 dev = [
-    "mypy>=1.13.0",
-    "pytest>=8.3.3",
-    "ruff>=0.7.1",
+    "ruff>=0.9.1",
 ]

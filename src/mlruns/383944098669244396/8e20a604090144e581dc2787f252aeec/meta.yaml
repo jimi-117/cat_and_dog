@@ -1,0 +1,15 @@
+artifact_uri: file:///home/sho/workspace/cat_and_dog/src/mlruns/383944098669244396/8e20a604090144e581dc2787f252aeec/artifacts
+end_time: 1736876525552
+entry_point_name: ''
+experiment_id: '383944098669244396'
+lifecycle_stage: active
+run_id: 8e20a604090144e581dc2787f252aeec
+run_name: unique-doe-769
+run_uuid: 8e20a604090144e581dc2787f252aeec
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1736876525544
+status: 3
+tags: []
+user_id: sho

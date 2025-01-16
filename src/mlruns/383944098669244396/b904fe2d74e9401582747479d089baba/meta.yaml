@@ -1,0 +1,15 @@
+artifact_uri: file:///home/sho/workspace/cat_and_dog/src/mlruns/383944098669244396/b904fe2d74e9401582747479d089baba/artifacts
+end_time: 1736851958985
+entry_point_name: ''
+experiment_id: '383944098669244396'
+lifecycle_stage: active
+run_id: b904fe2d74e9401582747479d089baba
+run_name: monumental-chimp-598
+run_uuid: b904fe2d74e9401582747479d089baba
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1736851958819
+status: 3
+tags: []
+user_id: sho
